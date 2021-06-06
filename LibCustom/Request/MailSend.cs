@@ -14,7 +14,7 @@ namespace LibCustom.Request
         private MailAddress MailAddressFrom { get; }
         private List<MailMessage> MailMessages { get; set; }
         private SmtpClient SmtpClient { get; }
-        public MailSend(string mailAddressFrom, string smtpServer, string password)
+        public MailSend(string mailAddressFrom, string smtpServer, string password, int port)
         {
             MailMessages = new();
             mailAddressFrom = mailAddressFrom.Trim();
@@ -24,7 +24,7 @@ namespace LibCustom.Request
             SmtpClient.EnableSsl = true;
             SmtpClient.UseDefaultCredentials = false;
             SmtpClient.Host = smtpServer;
-            SmtpClient.Port = 587;
+            SmtpClient.Port = port;
             SmtpClient.Credentials = new NetworkCredential(mailAddressFrom.Split('@')[0], password);
             SmtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
         }

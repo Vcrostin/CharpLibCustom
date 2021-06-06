@@ -19,7 +19,7 @@ namespace TestProject1
         {
             var utf8reader = new Utf8JsonReader(File.ReadAllBytes("login_data.json"));
             var array = JsonSerializer.Deserialize<Dictionary<string, string>>(ref utf8reader);
-            MailSend mailSend = new(array["mail"], array["smtpserver"], array["password"]);
+            MailSend mailSend = new(array["mail"], array["smtpserver"], array["password"],int.Parse(array["port"]));
             var k = mailSend.AttachMail("test-hackaton@yandex.ru", "реяр", "реяр");
             var variable = mailSend.AttachMail("qqwwzoopark@gmail.com", "", "");
             mailSend.SendMail();
@@ -31,7 +31,7 @@ namespace TestProject1
         {
             var utf8reader = new Utf8JsonReader(File.ReadAllBytes("login_data.json"));
             var array = JsonSerializer.Deserialize<Dictionary<string, string>>(ref utf8reader);
-            MailSend mailSend = new(array["mail"], array["smtpserver"], array["password"]);
+            MailSend mailSend = new(array["mail"], array["smtpserver"], array["password"], int.Parse(array["port"]));
             var variable = mailSend.AttachMail("qqwwzoopark@gmail.com", "", "");
             Console.WriteLine(variable.Item2);
             mailSend.SendMail();

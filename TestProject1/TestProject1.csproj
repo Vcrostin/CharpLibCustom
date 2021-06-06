@@ -17,4 +17,10 @@
     <ProjectReference Include="..\LibCustom\LibCustom.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="login_data.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
